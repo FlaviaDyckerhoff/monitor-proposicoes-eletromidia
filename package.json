@@ -1,0 +1,19 @@
+{
+  "name": "monitor-proposicoes-eletromidia",
+  "version": "1.0.0",
+  "description": "Monitor interno de proposicoes novas SP/RJ para Eletromidia",
+  "main": "monitor.js",
+  "scripts": {
+    "start": "node --expose-gc monitor.js",
+    "dry-run": "DRY_RUN=true node --expose-gc monitor.js"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.10",
+    "adm-zip": "^0.5.16",
+    "iconv-lite": "^0.6.3",
+    "nodemailer": "^8.0.7"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

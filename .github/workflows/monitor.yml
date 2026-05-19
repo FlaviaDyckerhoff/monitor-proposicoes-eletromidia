@@ -1,0 +1,50 @@
+name: Monitor Proposicoes Eletromidia
+
+on:
+  schedule:
+    - cron: '5 11 * * *'   # 08:05 BRT
+    - cron: '5 19 * * *'   # 16:05 BRT
+  workflow_dispatch:
+
+concurrency:
+  group: monitor-proposicoes-eletromidia
+  cancel-in-progress: false
+
+jobs:
+  monitorar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout do repositorio
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Executar monitor
+        env:
+          EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
+          EMAIL_SENHA: ${{ secrets.EMAIL_SENHA }}
+          EMAIL_DESTINO: ${{ secrets.EMAIL_DESTINO }}
+        run: node --expose-gc monitor.js
+
+      - name: Salvar estado atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ ! -f estado.json ]; then
+            echo '{"proposicoes_vistas":[],"matches_enviados":[],"ultima_execucao":""}' > estado.json
+          fi
+          git add estado.json
+          git diff --staged --quiet || git commit -m "chore: atualiza estado [skip ci]"
+          git pull --rebase origin main
+          git push
