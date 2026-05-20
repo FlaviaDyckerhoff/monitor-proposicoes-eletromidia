@@ -641,7 +641,7 @@ async function main() {
   const primeiroRun = vistos.size === 0;
 
   const { itens, status } = await buscarTodasFontes();
-  console.log('Total consolidado: ' + itens.length);
+  console.log('Universo bruto coletado: ' + itens.length + ' item(ns)');
   if (itens.length === 0) {
     console.log('Nenhum item retornado pelas fontes.');
     if (!DRY_RUN && status.some(s => !s.ok)) process.exit(1);
@@ -650,8 +650,9 @@ async function main() {
 
   const novos = itens.filter(item => !vistos.has(item.dedupe_key));
   const matches = novos.map(classificarMatch).filter(Boolean);
-  console.log('Novos: ' + novos.length + ' | matches: ' + matches.length);
-  console.log('Matches alta/media: ' + agruparPorConfianca(matches).alta.length + '/' + agruparPorConfianca(matches).media.length);
+  console.log('Novos ainda nao vistos: ' + novos.length);
+  console.log('Filtrados para envio Eletromidia: ' + matches.length);
+  console.log('Filtrados alta/media: ' + agruparPorConfianca(matches).alta.length + '/' + agruparPorConfianca(matches).media.length);
 
   if (DRY_RUN) {
     matches.slice(0, 20).forEach(m => {
