@@ -5,8 +5,8 @@ env:
 
 on:
   schedule:
-    - cron: '5 11 * * *'   # 08:05 BRT
-    - cron: '5 19 * * *'   # 16:05 BRT
+    - cron: '5 11 * * 1-5'   # 08:05 BRT, seg-sex
+    - cron: '5 19 * * 1-5'   # 16:05 BRT, seg-sex
   workflow_dispatch:
 
 concurrency:
@@ -38,9 +38,12 @@ jobs:
           EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
           EMAIL_SENHA: ${{ secrets.EMAIL_SENHA }}
           EMAIL_DESTINO: ${{ secrets.EMAIL_DESTINO }}
+          ELETROMIDIA_DESTINO: alertas-eletromidia@monitorlegislativo.com.br
+          EMAIL_ALERTA_FALHA: flavia@monitorlegislativo.com.br
         run: node --expose-gc monitor.js
 
       - name: Salvar estado atualizado
+        if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -51,3 +54,11 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: atualiza estado [skip ci]"
           git pull --rebase origin main
           git push
+
+      - name: Alertar falha interna
+        if: failure()
+        env:
+          EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
+          EMAIL_SENHA: ${{ secrets.EMAIL_SENHA }}
+          EMAIL_ALERTA_FALHA: flavia@monitorlegislativo.com.br
+        run: node scripts/send-failure-alert.js

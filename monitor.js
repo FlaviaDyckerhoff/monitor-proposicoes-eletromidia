@@ -3,16 +3,20 @@ const { DOMParser } = require('@xmldom/xmldom');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
 const nodemailer = require('nodemailer');
+const path = require('path');
 
 // CMRJ usa cadeia TLS antiga; manter igual ao monitor CMRJ existente.
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const EMAIL_DESTINO = process.env.EMAIL_DESTINO || 'tramitacao@monitorlegislativo.com.br';
+const ELETROMIDIA_DESTINO = process.env.ELETROMIDIA_DESTINO || EMAIL_DESTINO;
+const EMAIL_ALERTA_FALHA = process.env.EMAIL_ALERTA_FALHA || 'flavia@monitorlegislativo.com.br';
 const EMAIL_REMETENTE = process.env.EMAIL_REMETENTE;
 const EMAIL_SENHA = process.env.EMAIL_SENHA;
 const DRY_RUN = String(process.env.DRY_RUN || '').toLowerCase() === 'true';
 const ARQUIVO_ESTADO = 'estado.json';
 const ANO = String(new Date().getFullYear());
+const LOGO_PATH = path.join(__dirname, 'assets', 'monitor-logo-color.png');
 
 const HIGH_TERMS = [
   'Eletromidia',
@@ -584,39 +588,50 @@ function agruparPorConfianca(matches) {
 }
 
 function montarTabela(itens) {
-  if (itens.length === 0) return '<p style="color:#777">Nenhum item.</p>';
-  return '<table style="width:100%;border-collapse:collapse;font-size:13px">' +
+  if (itens.length === 0) return '<p style="color:#64748b;margin:8px 0 18px 0">Nenhum item nesta faixa.</p>';
+  return '<table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px">' +
     '<thead><tr style="background:#1a3a5c;color:white">' +
-    '<th style="padding:8px;text-align:left">Casa</th>' +
-    '<th style="padding:8px;text-align:left">Proposicao</th>' +
-    '<th style="padding:8px;text-align:left">Termos</th>' +
-    '<th style="padding:8px;text-align:left">Ementa</th>' +
-    '<th style="padding:8px;text-align:left">Link</th>' +
+    '<th style="padding:10px;text-align:left">Casa</th>' +
+    '<th style="padding:10px;text-align:left">Proposição</th>' +
+    '<th style="padding:10px;text-align:left">Termos</th>' +
+    '<th style="padding:10px;text-align:left">Ementa</th>' +
+    '<th style="padding:10px;text-align:left">Link</th>' +
     '</tr></thead><tbody>' +
     itens.map(item => '<tr>' +
-      '<td style="padding:8px;border-bottom:1px solid #eee;white-space:nowrap">' + escaparHtml(item.casa) + '</td>' +
-      '<td style="padding:8px;border-bottom:1px solid #eee;white-space:nowrap"><strong>' + escaparHtml(item.tipo + ' ' + item.numero + '/' + item.ano) + '</strong></td>' +
-      '<td style="padding:8px;border-bottom:1px solid #eee;font-size:12px;color:#555">' + escaparHtml(item.matched_terms.join(', ')) + '</td>' +
-      '<td style="padding:8px;border-bottom:1px solid #eee">' + escaparHtml(item.ementa) + '</td>' +
-      '<td style="padding:8px;border-bottom:1px solid #eee;white-space:nowrap"><a href="' + escaparHtml(item.url) + '">ver</a></td>' +
+      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;white-space:nowrap;color:#334155">' + escaparHtml(item.casa) + '</td>' +
+      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;white-space:nowrap"><strong>' + escaparHtml(item.tipo + ' ' + item.numero + '/' + item.ano) + '</strong></td>' +
+      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#475569">' + escaparHtml(item.matched_terms.join(', ')) + '</td>' +
+      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;color:#111827">' + escaparHtml(item.ementa) + '</td>' +
+      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;white-space:nowrap"><a href="' + escaparHtml(item.url) + '" style="color:#1a3a5c;text-decoration:none;font-weight:bold">ver</a></td>' +
     '</tr>').join('') +
     '</tbody></table>';
 }
 
 async function enviarEmail(matches, status) {
-  if (!EMAIL_REMETENTE || !EMAIL_SENHA || !EMAIL_DESTINO) {
+  if (!EMAIL_REMETENTE || !EMAIL_SENHA || !ELETROMIDIA_DESTINO) {
     throw new Error('Variaveis de email ausentes.');
   }
   const grupos = agruparPorConfianca(matches);
   const statusTexto = status.map(s => s.ok ? (s.fonte + ': ' + s.total) : (s.fonte + ': erro')).join(' | ');
-  const html = '<div style="font-family:Arial,sans-serif;max-width:980px;margin:0 auto">' +
-    '<h2 style="color:#1a3a5c;border-bottom:2px solid #1a3a5c;padding-bottom:8px">Eletromidia — proposicoes novas filtradas SP/RJ</h2>' +
-    '<p style="color:#666;font-size:13px">Uso interno Monitor Legislativo — ' + new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }) + '</p>' +
-    '<p><strong>Resumo:</strong> alta confianca: ' + grupos.alta.length + ' | media/revisar: ' + grupos.media.length + '</p>' +
-    '<p style="font-size:12px;color:#777">Fontes: ' + escaparHtml(statusTexto) + '</p>' +
-    '<h3 style="color:#1a3a5c">Alta confianca</h3>' + montarTabela(grupos.alta) +
-    '<h3 style="color:#856404;margin-top:24px">Media / revisar</h3>' + montarTabela(grupos.media) +
-    '<p style="margin-top:20px;font-size:12px;color:#999">Este email e interno. Nao enviar automaticamente a cliente.</p>' +
+  const html = '<div style="font-family:Arial,sans-serif;max-width:980px;margin:0 auto;background:#ffffff;color:#111827">' +
+    '<div style="background:#0f3357;padding:22px 24px;border-radius:12px 12px 0 0;color:#ffffff">' +
+      (fs.existsSync(LOGO_PATH) ? '<img src="cid:monitorLogo" alt="Monitor Legislativo" style="height:58px;vertical-align:middle;margin-right:18px">' : '') +
+      '<span style="font-size:26px;font-weight:700;vertical-align:middle">Monitor Legislativo</span>' +
+      '<div style="font-size:14px;color:#d7e5f2;margin-top:8px">Proposições novas • SP/RJ • Eletromídia</div>' +
+    '</div>' +
+    '<div style="border:1px solid #d7dde7;border-top:0;padding:24px;border-radius:0 0 12px 12px">' +
+      '<p style="display:inline-block;background:#e6f1fb;color:#0f3357;padding:6px 14px;border-radius:20px;font-weight:bold;margin:0 0 16px 0">Eletromídia</p>' +
+      '<h2 style="color:#111827;margin:0 0 6px 0;font-size:24px">Eletromídia | Proposições novas filtradas</h2>' +
+      '<p style="color:#526070;margin:0 0 18px 0">Rodada diária • ' + new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }) + ' BRT</p>' +
+      '<p style="background:#eef6ff;border:1px solid #c7ddf2;color:#173d63;padding:12px 14px;border-radius:8px;font-weight:bold">' +
+        matches.length + ' proposição(ões) filtrada(s): ' + grupos.alta.length + ' alta confiança e ' + grupos.media.length + ' para revisão' +
+      '</p>' +
+      '<p style="font-size:12px;color:#64748b;margin:0 0 18px 0">Fontes consultadas: ' + escaparHtml(statusTexto) + '</p>' +
+      '<h3 style="color:#1a3a5c;margin:20px 0 8px 0">Alta confiança</h3>' + montarTabela(grupos.alta) +
+      '<h3 style="color:#856404;margin:24px 0 8px 0">Média / revisar</h3>' + montarTabela(grupos.media) +
+      '<hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0">' +
+      '<p style="font-size:12px;color:#64748b;margin:0">Monitor Legislativo — acompanhamento legislativo estadual e municipal. Horário sempre em BRT.</p>' +
+    '</div>' +
   '</div>';
 
   const transporter = nodemailer.createTransport({
@@ -626,8 +641,38 @@ async function enviarEmail(matches, status) {
 
   await transporter.sendMail({
     from: '"Monitor Eletromidia" <' + EMAIL_REMETENTE + '>',
-    to: EMAIL_DESTINO,
-    subject: '[Eletromidia] ' + matches.length + ' proposicao(oes) nova(s) filtrada(s) SP/RJ - ' + new Date().toLocaleDateString('pt-BR'),
+    to: ELETROMIDIA_DESTINO,
+    subject: 'Eletromídia | Proposições novas filtradas SP/RJ — ' + new Date().toLocaleDateString('pt-BR'),
+    html,
+    attachments: fs.existsSync(LOGO_PATH) ? [{ filename: 'monitor-logo-color.png', path: LOGO_PATH, cid: 'monitorLogo' }] : [],
+  });
+}
+
+async function enviarAlertaErro(status, contexto) {
+  if (!EMAIL_REMETENTE || !EMAIL_SENHA || !EMAIL_ALERTA_FALHA) return;
+  const erros = status.filter(s => !s.ok);
+  const runUrl = process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
+    ? (process.env.GITHUB_SERVER_URL || 'https://github.com') + '/' + process.env.GITHUB_REPOSITORY + '/actions/runs/' + process.env.GITHUB_RUN_ID
+    : '';
+  const linhas = erros.length
+    ? erros.map(s => '<li><strong>' + escaparHtml(s.fonte) + ':</strong> ' + escaparHtml(s.erro || 'erro') + '</li>').join('')
+    : '<li>' + escaparHtml(contexto || 'Falha no workflow') + '</li>';
+  const html = '<div style="font-family:Arial,sans-serif;max-width:760px;color:#111827">' +
+    '<h2 style="color:#b42318;margin-bottom:8px">Alerta interno — Eletromídia Proposições</h2>' +
+    '<p>O monitor encontrou erro em fonte/workflow. Alerta interno para revisão operacional; se havia matches nas demais fontes, o email cliente pode ter sido enviado com o restante.</p>' +
+    '<ul>' + linhas + '</ul>' +
+    (runUrl ? '<p><strong>Run:</strong> <a href="' + runUrl + '">' + runUrl + '</a></p>' : '') +
+    '</div>';
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: { user: EMAIL_REMETENTE, pass: EMAIL_SENHA },
+  });
+
+  await transporter.sendMail({
+    from: '"Monitor Legislativo" <' + EMAIL_REMETENTE + '>',
+    to: EMAIL_ALERTA_FALHA,
+    subject: '[ALERTA INTERNO] Eletromídia Proposições — erro na coleta',
     html,
   });
 }
@@ -642,9 +687,15 @@ async function main() {
 
   const { itens, status } = await buscarTodasFontes();
   console.log('Universo bruto coletado: ' + itens.length + ' item(ns)');
+  if (!DRY_RUN && status.some(s => !s.ok)) {
+    await enviarAlertaErro(status, 'Erro parcial na coleta');
+  }
   if (itens.length === 0) {
     console.log('Nenhum item retornado pelas fontes.');
-    if (!DRY_RUN && status.some(s => !s.ok)) process.exit(1);
+    if (!DRY_RUN) {
+      await enviarAlertaErro(status, 'Nenhum item retornado pelas fontes');
+      process.exit(1);
+    }
     return;
   }
 
