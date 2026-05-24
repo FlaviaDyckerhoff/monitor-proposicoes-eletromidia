@@ -75,6 +75,7 @@ function carregarEstado() {
   return {
     proposicoes_vistas: estado.proposicoes_vistas || [],
     matches_enviados: estado.matches_enviados || [],
+    ultimos_por_tipo_ano: estado.ultimos_por_tipo_ano || {},
     ultima_execucao: estado.ultima_execucao || '',
   };
 }
@@ -208,6 +209,59 @@ function normalizarItem(item) {
   };
   normalizado.dedupe_key = dedupeKey({ ...item, ...normalizado });
   return normalizado;
+}
+
+function numeroInteiro(item) {
+  const n = Number(String(item.numero || '').replace(/\D/g, ''));
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+function chaveTipoAno(item) {
+  return `${item.casa || item.source || 'FONTE'}|${item.tipo || 'OUTROS'}|${item.ano || '-'}`;
+}
+
+function calcularUltimosPorTipoAno(items) {
+  const ultimos = {};
+  for (const item of items) {
+    const numero = numeroInteiro(item);
+    if (!numero || !item.ano || item.ano === '-') continue;
+    const chave = chaveTipoAno(item);
+    ultimos[chave] = Math.max(ultimos[chave] || 0, numero);
+  }
+  return ultimos;
+}
+
+function detectarSaltos(items, estado) {
+  const anteriores = estado.ultimos_por_tipo_ano || {};
+  const atuais = calcularUltimosPorTipoAno(items);
+  const presentes = {};
+  for (const item of items) {
+    const numero = numeroInteiro(item);
+    if (!numero) continue;
+    const chave = chaveTipoAno(item);
+    if (!presentes[chave]) presentes[chave] = new Set();
+    presentes[chave].add(numero);
+  }
+  const alertas = [];
+  for (const [chave, atual] of Object.entries(atuais)) {
+    const anterior = Number(anteriores[chave] || 0);
+    if (!anterior || atual <= anterior + 1) continue;
+    const faltantes = [];
+    for (let n = anterior + 1; n < atual; n++) {
+      if (!presentes[chave]?.has(n)) faltantes.push(n);
+    }
+    if (faltantes.length) {
+      const [casa, tipo, ano] = chave.split('|');
+      alertas.push({ casa, tipo, ano, anterior, atual, faltantes });
+    }
+  }
+  return { alertas, atuais };
+}
+
+function renderAlertasSaltos(alertas) {
+  if (!alertas.length) return '';
+  const itens = alertas.map(a => '<li><strong>' + escaparHtml(a.casa + ' — ' + a.tipo + ' ' + a.ano) + '</strong>: último visto ' + a.anterior + ', maior atual ' + a.atual + '. Possível(is) ausente(s): ' + escaparHtml(a.faltantes.join(', ')) + '</li>').join('');
+  return '<div style="background:#fff4e5;border:1px solid #f59e0b;color:#7c2d12;padding:12px 14px;margin:12px 0;border-radius:8px"><strong>Alerta de sequência:</strong><ul style="margin:8px 0 0 18px;padding:0">' + itens + '</ul></div>';
 }
 
 function termoBate(textoNormalizado, termo) {
@@ -607,7 +661,7 @@ function montarTabela(itens) {
     '</tbody></table>';
 }
 
-async function enviarEmail(matches, status) {
+async function enviarEmail(matches, status, alertas = []) {
   if (!EMAIL_REMETENTE || !EMAIL_SENHA || !ELETROMIDIA_DESTINO) {
     throw new Error('Variaveis de email ausentes.');
   }
@@ -627,6 +681,7 @@ async function enviarEmail(matches, status) {
         matches.length + ' proposição(ões) filtrada(s): ' + grupos.alta.length + ' alta confiança e ' + grupos.media.length + ' para revisão' +
       '</p>' +
       '<p style="font-size:12px;color:#64748b;margin:0 0 18px 0">Fontes consultadas: ' + escaparHtml(statusTexto) + '</p>' +
+      renderAlertasSaltos(alertas) +
       '<h3 style="color:#1a3a5c;margin:20px 0 8px 0">Alta confiança</h3>' + montarTabela(grupos.alta) +
       '<h3 style="color:#856404;margin:24px 0 8px 0">Média / revisar</h3>' + montarTabela(grupos.media) +
       '<hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0">' +
@@ -642,7 +697,7 @@ async function enviarEmail(matches, status) {
   await transporter.sendMail({
     from: '"Monitor Eletromidia" <' + EMAIL_REMETENTE + '>',
     to: ELETROMIDIA_DESTINO,
-    subject: 'Eletromídia | Proposições novas filtradas SP/RJ — ' + new Date().toLocaleDateString('pt-BR'),
+    subject: 'Eletromídia | Proposições novas filtradas SP/RJ' + (alertas.length ? ' | alerta sequência' : '') + ' — ' + new Date().toLocaleDateString('pt-BR'),
     html,
     attachments: fs.existsSync(LOGO_PATH) ? [{ filename: 'monitor-logo-color.png', path: LOGO_PATH, cid: 'monitorLogo' }] : [],
   });
@@ -701,14 +756,17 @@ async function main() {
 
   const novos = itens.filter(item => !vistos.has(item.dedupe_key));
   const matches = novos.map(classificarMatch).filter(Boolean);
+  const { alertas, atuais } = detectarSaltos(itens, estado);
   console.log('Novos ainda nao vistos: ' + novos.length);
   console.log('Filtrados para envio Eletromidia: ' + matches.length);
   console.log('Filtrados alta/media: ' + agruparPorConfianca(matches).alta.length + '/' + agruparPorConfianca(matches).media.length);
+  if (alertas.length) console.log('Alertas de sequência: ' + alertas.length);
 
   if (DRY_RUN) {
     matches.slice(0, 20).forEach(m => {
       console.log('MATCH ' + m.confidence.toUpperCase() + ' | ' + m.casa + ' | ' + m.tipo + ' ' + m.numero + '/' + m.ano + ' | ' + m.matched_terms.join(', ') + ' | ' + m.ementa.substring(0, 120));
     });
+    alertas.forEach(a => console.log('ALERTA_SEQUENCIA | ' + a.casa + ' | ' + a.tipo + ' ' + a.ano + ' | ' + a.anterior + ' -> ' + a.atual + ' | faltantes: ' + a.faltantes.join(', ')));
     return;
   }
 
@@ -716,13 +774,14 @@ async function main() {
     console.log('Primeiro run: marcando universo atual como visto sem enviar email.');
     itens.forEach(item => vistos.add(item.dedupe_key));
     estado.proposicoes_vistas = Array.from(vistos);
+    estado.ultimos_por_tipo_ano = { ...(estado.ultimos_por_tipo_ano || {}), ...atuais };
     estado.ultima_execucao = new Date().toISOString();
     salvarEstado(estado);
     return;
   }
 
-  if (matches.length > 0) {
-    await enviarEmail(matches, status);
+  if (matches.length > 0 || alertas.length > 0) {
+    await enviarEmail(matches, status, alertas);
     estado.matches_enviados.push(...matches.map(m => ({
       dedupe_key: m.dedupe_key,
       source: m.source,
@@ -741,6 +800,7 @@ async function main() {
 
   novos.forEach(item => vistos.add(item.dedupe_key));
   estado.proposicoes_vistas = Array.from(vistos);
+  estado.ultimos_por_tipo_ano = { ...(estado.ultimos_por_tipo_ano || {}), ...atuais };
   estado.ultima_execucao = new Date().toISOString();
   salvarEstado(estado);
 }
