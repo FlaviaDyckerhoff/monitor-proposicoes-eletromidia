@@ -16187,7 +16187,40 @@
     "alerj:pr:2624:2026:20260502624:alerj:20260502624:v9hj28",
     "alerj:ind:l:661:2026:20260600661:alerj:20260600661:v9hj29",
     "alerj:ind:l:660:2026:20260600660:alerj:20260600660:v9hj29",
-    "alerj:ind:l:659:2026:20260600659:alerj:20260600659:v9hj29"
+    "alerj:ind:l:659:2026:20260600659:alerj:20260600659:v9hj29",
+    "cmsp:rds:754:2026:554872:4kpvw6",
+    "cmsp:aud:235:2026:554873:4kpvw7",
+    "cmsp:pl:448:2026:554877:4kpvwb",
+    "cmsp:rds:755:2026:554880:4kpvwz",
+    "cmsp:rds:756:2026:554882:4kpvx1",
+    "cmsp:rds:757:2026:554883:4kpvx2",
+    "alerj:ind:6900:2026:20260706900:alerj:20260706900:v9hj2a",
+    "alerj:ind:6899:2026:20260706899:alerj:20260706899:v9hj2a",
+    "alerj:ind:6898:2026:20260706898:alerj:20260706898:v9hj2a",
+    "alerj:ind:6897:2026:20260706897:alerj:20260706897:v9hj2a",
+    "alerj:ind:6896:2026:20260706896:alerj:20260706896:v9hj2a",
+    "alerj:ind:6895:2026:20260706895:alerj:20260706895:v9hj2a",
+    "alerj:ind:6894:2026:20260706894:alerj:20260706894:v9hj2a",
+    "alerj:ind:6893:2026:20260706893:alerj:20260706893:v9hj2a",
+    "alerj:ind:6892:2026:20260706892:alerj:20260706892:v9hj2a",
+    "alerj:ind:6891:2026:20260706891:alerj:20260706891:v9hj2a",
+    "alerj:ind:6890:2026:20260706890:alerj:20260706890:v9hj2a",
+    "alerj:ind:6889:2026:20260706889:alerj:20260706889:v9hj2a",
+    "alerj:ind:6888:2026:20260706888:alerj:20260706888:v9hj2a",
+    "alerj:ind:6887:2026:20260706887:alerj:20260706887:v9hj2a",
+    "alerj:ind:6886:2026:20260706886:alerj:20260706886:v9hj2a",
+    "cmrj:req:1027:2026:20261001027:cmrj:20261001027:c5jeqs",
+    "cmrj:req:1026:2026:20261001026:cmrj:20261001026:c5jeqs",
+    "cmrj:req:1025:2026:20261001025:cmrj:20261001025:c5jeqs",
+    "cmrj:req:1024:2026:20261001024:cmrj:20261001024:c5jeqs",
+    "cmrj:req:1023:2026:20261001023:cmrj:20261001023:c5jeqs",
+    "cmrj:req:1022:2026:20261001022:cmrj:20261001022:c5jeqs",
+    "cmrj:req:1021:2026:20261001021:cmrj:20261001021:c5jeqs",
+    "cmrj:req:1020:2026:20261001020:cmrj:20261001020:c5jeqs",
+    "cmrj:req:1019:2026:20261001019:cmrj:20261001019:c5jeqs",
+    "cmrj:req:1018:2026:20261001018:cmrj:20261001018:c5jeqs",
+    "cmrj:req:1016:2026:20261001016:cmrj:20261001016:c5jeqs",
+    "cmrj:req:1015:2026:20261001015:cmrj:20261001015:c5jeqs"
   ],
   "matches_enviados": [
     {
@@ -16470,6 +16503,18 @@
         "LED"
       ],
       "sent_at": "2026-05-29T21:11:12.616Z"
+    },
+    {
+      "dedupe_key": "alerj:ind:6889:2026:20260706889:alerj:20260706889:v9hj2a",
+      "source": "ALERJ",
+      "tipo": "IND",
+      "numero": "6889",
+      "ano": "2026",
+      "confidence": "media",
+      "matched_terms": [
+        "LED"
+      ],
+      "sent_at": "2026-06-03T15:29:27.109Z"
     }
   ],
   "ultimos_por_tipo_ano": {
@@ -16481,10 +16526,10 @@
     "ALESP|PDL|2026": 16,
     "ALESP|PLC|2026": 9,
     "ALESP|PR|2026": 9,
-    "CMSP|RDS|2026": 753,
+    "CMSP|RDS|2026": 757,
     "CMSP|PR|2026": 13,
-    "CMSP|PL|2026": 447,
-    "CMSP|AUD|2026": 234,
+    "CMSP|PL|2026": 448,
+    "CMSP|AUD|2026": 235,
     "CMSP|IND|2026": 353,
     "CMSP|MOC|2026": 30,
     "CMSP|PDL|2026": 77,
@@ -16499,7 +16544,7 @@
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2631,
     "ALERJ|IND-L|2026": 661,
-    "ALERJ|IND|2026": 6882,
+    "ALERJ|IND|2026": 6900,
     "ALERJ|MOC|2026": 2736,
     "ALERJ|REQ|2026": 85,
     "ALERJ|REQ-I|2026": 15,
@@ -16515,5 +16560,5 @@
     "CMRJ|REQ|2026": 5209,
     "CMRJ|MSG|2026": 31
   },
-  "ultima_execucao": "2026-06-02T21:52:07.310Z"
+  "ultima_execucao": "2026-06-03T15:29:27.109Z"
 }
