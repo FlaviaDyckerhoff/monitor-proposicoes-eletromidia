@@ -4,9 +4,6 @@ env:
   TZ: America/Sao_Paulo
 
 on:
-  schedule:
-    - cron: '5 8 * * 1-5'   # 05:05 BRT, seg-sex
-    - cron: '5 19 * * 1-5'   # 16:05 BRT, seg-sex
   workflow_dispatch:
 
 concurrency:
