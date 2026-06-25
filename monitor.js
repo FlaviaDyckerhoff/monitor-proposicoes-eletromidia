@@ -508,6 +508,11 @@ function parsearDomino(html, tipo, source) {
     }
     if (ano !== ANO) continue;
 
+    const detalheMatch = linha.match(/data-role="([^"]+)"/i);
+    const url = source === 'ALERJ'
+      ? montarUrlDetalheAlerj(tipo.id, detalheMatch && detalheMatch[1])
+      : tipo.url;
+
     let ementa = '-';
     let data = null;
     let autor = null;
@@ -538,11 +543,24 @@ function parsearDomino(html, tipo, source) {
       autor,
       data_apresentacao: data,
       ementa,
-      url: tipo.url,
+      url,
       raw_text: tds.join(' '),
     }));
   }
   return proposicoes;
+}
+
+function montarUrlDetalheAlerj(tipoId, href) {
+  const baseUrl = 'https://www3.alerj.rj.gov.br/lotus_notes/default.asp';
+  if (!href) return baseUrl + '?id=' + tipoId;
+
+  const normalizada = href.replace(/&amp;/g, '&').trim();
+  const url = normalizada.startsWith('http')
+    ? new URL(normalizada)
+    : new URL(normalizada, 'http://alerjln1.alerj.rj.gov.br');
+  const path = url.pathname + url.search;
+  const encoded = Buffer.from(path, 'utf8').toString('base64');
+  return baseUrl + '?id=' + tipoId + '&url=' + encodeURIComponent(encoded);
 }
 
 async function buscarAlerj() {
