@@ -33171,7 +33171,8 @@
     "cmsp:ind:383:2026:556772:4kr54j",
     "cmsp:rds:856:2026:556774:4kr54l",
     "cmsp:rds:857:2026:556775:4kr54m",
-    "cmsp:pl:541:2026:556776:4kr54n"
+    "cmsp:pl:541:2026:556776:4kr54n",
+    "alerj:plc:59:2026:20260200059:alerj:20260200059:1f2ihk"
   ],
   "matches_enviados": [
     {
@@ -33586,7 +33587,7 @@
     "CMSP|RPL|2026": 20,
     "CMSP|PLO|2026": 5,
     "ALERJ|PEC|2026": 34,
-    "ALERJ|PLC|2026": 58,
+    "ALERJ|PLC|2026": 59,
     "ALERJ|PL|2026": 7928,
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2693,
@@ -33608,5 +33609,5 @@
     "CMRJ|MSG|2026": 32,
     "ALESP|OUTROS|2026": 10114
   },
-  "ultima_execucao": "2026-06-29T08:25:41.578Z"
+  "ultima_execucao": "2026-06-30T08:26:18.249Z"
 }
