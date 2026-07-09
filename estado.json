@@ -34431,7 +34431,11 @@
     "cmsp:rds:876:2026:557315:4krp07",
     "cmsp:pl:559:2026:557320:4krp0x",
     "cmsp:pl:560:2026:557322:4krp0z",
-    "cmsp:rds:877:2026:557323:4krp10"
+    "cmsp:rds:877:2026:557323:4krp10",
+    "cmsp:pl:561:2026:557329:4krp16",
+    "cmsp:pl:562:2026:557332:4krp1u",
+    "cmsp:rds:878:2026:557333:4krp1v",
+    "cmsp:pl:563:2026:557334:4krp1w"
   ],
   "matches_enviados": [
     {
@@ -34857,9 +34861,9 @@
     "ALESP|PDL|2026": 18,
     "ALESP|PLC|2026": 14,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 877,
+    "CMSP|RDS|2026": 878,
     "CMSP|PR|2026": 18,
-    "CMSP|PL|2026": 560,
+    "CMSP|PL|2026": 563,
     "CMSP|AUD|2026": 259,
     "CMSP|IND|2026": 396,
     "CMSP|MOC|2026": 31,
@@ -34893,5 +34897,5 @@
     "ALESP|OUTROS|2026": 10114,
     "ALESP|PEC|2026": 1
   },
-  "ultima_execucao": "2026-07-08T08:25:52.573Z"
+  "ultima_execucao": "2026-07-09T08:25:34.075Z"
 }
