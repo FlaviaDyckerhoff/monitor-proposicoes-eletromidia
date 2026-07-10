@@ -34435,7 +34435,29 @@
     "cmsp:pl:561:2026:557329:4krp16",
     "cmsp:pl:562:2026:557332:4krp1u",
     "cmsp:rds:878:2026:557333:4krp1v",
-    "cmsp:pl:563:2026:557334:4krp1w"
+    "cmsp:pl:563:2026:557334:4krp1w",
+    "alesp:pl:686:2026:1000698057:ya34ih",
+    "alesp:req:2783:2026:1000698059:ya34if",
+    "alesp:req:2785:2026:1000698061:ya34hs",
+    "alesp:indicacao:12032:2026:1000698083:ya34g0",
+    "alesp:mocao:222:2026:1000698074:ya34gu",
+    "alesp:indicacao:12026:2026:1000698076:ya34gs",
+    "alesp:indicacao:12027:2026:1000698077:ya34gr",
+    "alesp:indicacao:12020:2026:1000698043:ya34jg",
+    "alesp:indicacao:12031:2026:1000698082:ya34g1",
+    "alesp:indicacao:12025:2026:1000698072:ya34gw",
+    "alesp:ri:307:2026:1000698069:ya34hk",
+    "alesp:indicacao:12030:2026:1000698081:ya34g2",
+    "alesp:indicacao:12022:2026:1000698048:ya34jb",
+    "alesp:ri:306:2026:1000698064:ya34hp",
+    "alesp:indicacao:12024:2026:1000698071:ya34gx",
+    "alesp:req:2784:2026:1000698060:ya34ht",
+    "alesp:pl:687:2026:1000698058:ya34ig",
+    "alesp:indicacao:12023:2026:1000698063:ya34hq",
+    "alesp:indicacao:12028:2026:1000698079:ya34gp",
+    "alesp:indicacao:12021:2026:1000698044:ya34jf",
+    "alesp:ri:308:2026:1000698078:ya34gq",
+    "alesp:indicacao:12029:2026:1000698080:ya34g3"
   ],
   "matches_enviados": [
     {
@@ -34853,11 +34875,11 @@
     }
   ],
   "ultimos_por_tipo_ano": {
-    "ALESP|Indicação|2026": 12018,
-    "ALESP|PL|2026": 685,
-    "ALESP|RI|2026": 305,
-    "ALESP|Req.|2026": 2781,
-    "ALESP|Moção|2026": 221,
+    "ALESP|Indicação|2026": 12032,
+    "ALESP|PL|2026": 687,
+    "ALESP|RI|2026": 308,
+    "ALESP|Req.|2026": 2785,
+    "ALESP|Moção|2026": 222,
     "ALESP|PDL|2026": 18,
     "ALESP|PLC|2026": 14,
     "ALESP|PR|2026": 10,
@@ -34897,5 +34919,5 @@
     "ALESP|OUTROS|2026": 10114,
     "ALESP|PEC|2026": 1
   },
-  "ultima_execucao": "2026-07-09T08:25:34.075Z"
+  "ultima_execucao": "2026-07-10T08:25:48.639Z"
 }
