@@ -35199,7 +35199,61 @@
     "cmsp:rds:916:2026:557475:4krpw2",
     "cmsp:ind:398:2026:557476:4krpw3",
     "cmsp:rds:917:2026:557477:4krpw4",
-    "cmsp:rds:918:2026:557483:4krpwv"
+    "cmsp:rds:918:2026:557483:4krpwv",
+    "alesp:req:2867:2026:1000698885:ya2yie",
+    "alesp:req:2858:2026:1000698876:ya2yj8",
+    "alesp:req:2861:2026:1000698879:ya2yj5",
+    "alesp:pl:738:2026:1000698900:ya2xyq",
+    "alesp:mocao:227:2026:1000698903:ya2xyn",
+    "alesp:req:2869:2026:1000698887:ya2yic",
+    "alesp:req:2872:2026:1000698890:ya2yho",
+    "alesp:req:2877:2026:1000698894:ya2yhk",
+    "alesp:ri:323:2026:1000698905:ya2xyl",
+    "alesp:req:2863:2026:1000698881:ya2yii",
+    "alesp:req:2871:2026:1000698889:ya2yia",
+    "alesp:pl:739:2026:1000698901:ya2xyp",
+    "alesp:req:2864:2026:1000698882:ya2yih",
+    "alesp:ri:322:2026:1000698899:ya2yhf",
+    "alesp:pl:740:2026:1000698902:ya2xyo",
+    "alesp:indicacao:12617:2026:1000698910:ya2xxv",
+    "alesp:req:2856:2026:1000698874:ya2yja",
+    "alesp:req:2845:2026:1000698863:ya2yk6",
+    "alesp:indicacao:12619:2026:1000698912:ya2xxt",
+    "alesp:req:2851:2026:1000698869:ya2yk0",
+    "alesp:req:2847:2026:1000698865:ya2yk4",
+    "alesp:req:2848:2026:1000698866:ya2yk3",
+    "alesp:req:2854:2026:1000698872:ya2yjc",
+    "alesp:req:2855:2026:1000698873:ya2yjb",
+    "alesp:req:2857:2026:1000698875:ya2yj9",
+    "alesp:req:2875:2026:1000698892:ya2yhm",
+    "alesp:indicacao:12615:2026:1000698896:ya2yhi",
+    "alesp:indicacao:12616:2026:1000698897:ya2yhh",
+    "alesp:req:2860:2026:1000698878:ya2yj6",
+    "alesp:req:2862:2026:1000698880:ya2yij",
+    "alesp:req:2859:2026:1000698877:ya2yj7",
+    "alesp:req:2866:2026:1000698884:ya2yif",
+    "alesp:req:2870:2026:1000698888:ya2yib",
+    "alesp:indicacao:12614:2026:1000698895:ya2yhj",
+    "alesp:req:2876:2026:1000698893:ya2yhl",
+    "alesp:req:2868:2026:1000698886:ya2yid",
+    "alesp:req:2865:2026:1000698883:ya2yig",
+    "alesp:req:2874:2026:1000698891:ya2yhn",
+    "alesp:req:2850:2026:1000698868:ya2yk1",
+    "alesp:req:2846:2026:1000698864:ya2yk5",
+    "alesp:req:2853:2026:1000698871:ya2yjd",
+    "alesp:indicacao:12618:2026:1000698911:ya2xxu",
+    "alesp:req:2849:2026:1000698867:ya2yk2",
+    "alesp:req:2852:2026:1000698870:ya2yje",
+    "cmsp:ind:399:2026:557508:4krqgt",
+    "cmsp:ind:400:2026:557509:4krqgu",
+    "cmsp:ind:401:2026:557510:4krqhg",
+    "cmsp:ind:402:2026:557511:4krqhh",
+    "cmsp:pl:574:2026:557512:4krqhi",
+    "cmsp:rds:919:2026:557513:4krqhj",
+    "cmsp:pl:575:2026:557523:4krqie",
+    "cmsp:rds:920:2026:557545:4krqk6",
+    "cmsp:rds:921:2026:557572:4krqmo",
+    "cmsp:pl:576:2026:557575:4krqmr"
   ],
   "matches_enviados": [
     {
@@ -35614,22 +35668,58 @@
         "LED"
       ],
       "sent_at": "2026-07-03T08:25:09.321Z"
+    },
+    {
+      "dedupe_key": "alesp:indicacao:12615:2026:1000698896:ya2yhi",
+      "source": "ALESP",
+      "tipo": "Indicação",
+      "numero": "12615",
+      "ano": "2026",
+      "confidence": "media",
+      "matched_terms": [
+        "LED"
+      ],
+      "sent_at": "2026-07-20T08:26:11.696Z"
+    },
+    {
+      "dedupe_key": "alesp:indicacao:12618:2026:1000698911:ya2xxu",
+      "source": "ALESP",
+      "tipo": "Indicação",
+      "numero": "12618",
+      "ano": "2026",
+      "confidence": "media",
+      "matched_terms": [
+        "Propaganda"
+      ],
+      "sent_at": "2026-07-20T08:26:11.696Z"
+    },
+    {
+      "dedupe_key": "cmsp:ind:402:2026:557511:4krqhh",
+      "source": "CMSP",
+      "tipo": "IND",
+      "numero": 402,
+      "ano": "2026",
+      "confidence": "media",
+      "matched_terms": [
+        "Painel"
+      ],
+      "sent_at": "2026-07-20T08:26:11.696Z"
     }
   ],
   "ultimos_por_tipo_ano": {
-    "ALESP|Indicação|2026": 12613,
-    "ALESP|PL|2026": 737,
-    "ALESP|RI|2026": 321,
-    "ALESP|Req.|2026": 2873,
-    "ALESP|Moção|2026": 226,
+    "ALESP|Indicação|2026": 12619,
+    "ALESP|PL|2026": 740,
+    "ALESP|RI|2026": 323,
+    "ALESP|Req.|2026": 2877,
+    "ALESP|Moção|2026": 227,
     "ALESP|PDL|2026": 18,
     "ALESP|PLC|2026": 14,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 918,
+    "CMSP|RDS|2026": 921,
     "CMSP|PR|2026": 20,
-    "CMSP|PL|2026": 573,
+    "CMSP|PL|2026": 576,
     "CMSP|AUD|2026": 259,
-    "CMSP|IND|2026": 398,
+    "CMSP|IND|2026": 402,
     "CMSP|MOC|2026": 31,
     "CMSP|PDL|2026": 89,
     "CMSP|RDP|2026": 11,
@@ -35661,5 +35751,5 @@
     "ALESP|OUTROS|2026": 10114,
     "ALESP|PEC|2026": 1
   },
-  "ultima_execucao": "2026-07-17T08:26:19.479Z"
+  "ultima_execucao": "2026-07-20T08:26:11.696Z"
 }
