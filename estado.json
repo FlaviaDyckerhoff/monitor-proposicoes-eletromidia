@@ -35253,7 +35253,33 @@
     "cmsp:pl:575:2026:557523:4krqie",
     "cmsp:rds:920:2026:557545:4krqk6",
     "cmsp:rds:921:2026:557572:4krqmo",
-    "cmsp:pl:576:2026:557575:4krqmr"
+    "cmsp:pl:576:2026:557575:4krqmr",
+    "alesp:req:2881:2026:1000698920:ya2xx0",
+    "alesp:req:2888:2026:1000698927:ya2xwt",
+    "alesp:req:2889:2026:1000698930:ya2xw5",
+    "alesp:req:2882:2026:1000698921:ya2xwz",
+    "alesp:indicacao:12622:2026:1000698937:ya2xvy",
+    "alesp:req:2878:2026:1000698917:ya2xxo",
+    "alesp:indicacao:12625:2026:1000698943:ya2xv7",
+    "alesp:pl:741:2026:1000698932:ya2xw3",
+    "alesp:req:2887:2026:1000698926:ya2xwu",
+    "alesp:ri:325:2026:1000698947:ya2xv3",
+    "alesp:req:2886:2026:1000698925:ya2xwv",
+    "alesp:mocao:228:2026:1000698934:ya2xw1",
+    "alesp:ri:324:2026:1000698944:ya2xv6",
+    "alesp:req:2885:2026:1000698924:ya2xww",
+    "alesp:req:2880:2026:1000698919:ya2xxm",
+    "alesp:req:2879:2026:1000698918:ya2xxn",
+    "alesp:req:2883:2026:1000698922:ya2xwy",
+    "alesp:req:2884:2026:1000698923:ya2xwx",
+    "alesp:indicacao:12623:2026:1000698938:ya2xvx",
+    "alesp:pl:742:2026:1000698942:ya2xv8",
+    "alesp:pl:743:2026:1000698945:ya2xv5",
+    "cmsp:rds:922:2026:557596:4krqoi",
+    "cmsp:rds:923:2026:557597:4krqoj",
+    "cmsp:rds:924:2026:557598:4krqok",
+    "cmsp:rds:925:2026:557599:4krqol",
+    "cmsp:rds:926:2026:557607:4krr7h"
   ],
   "matches_enviados": [
     {
@@ -35707,15 +35733,15 @@
     }
   ],
   "ultimos_por_tipo_ano": {
-    "ALESP|Indicação|2026": 12619,
-    "ALESP|PL|2026": 740,
-    "ALESP|RI|2026": 323,
-    "ALESP|Req.|2026": 2877,
-    "ALESP|Moção|2026": 227,
+    "ALESP|Indicação|2026": 12625,
+    "ALESP|PL|2026": 743,
+    "ALESP|RI|2026": 325,
+    "ALESP|Req.|2026": 2889,
+    "ALESP|Moção|2026": 228,
     "ALESP|PDL|2026": 18,
     "ALESP|PLC|2026": 14,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 921,
+    "CMSP|RDS|2026": 926,
     "CMSP|PR|2026": 20,
     "CMSP|PL|2026": 576,
     "CMSP|AUD|2026": 259,
@@ -35751,5 +35777,5 @@
     "ALESP|OUTROS|2026": 10114,
     "ALESP|PEC|2026": 1
   },
-  "ultima_execucao": "2026-07-20T08:26:11.696Z"
+  "ultima_execucao": "2026-07-21T08:28:27.909Z"
 }
