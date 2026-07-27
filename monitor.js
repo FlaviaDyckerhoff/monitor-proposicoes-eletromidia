@@ -673,7 +673,7 @@ function montarTabela(itens) {
       '<td style="padding:9px;border-bottom:1px solid #e5e7eb;white-space:nowrap;color:#334155">' + escaparHtml(item.casa) + '</td>' +
       '<td style="padding:9px;border-bottom:1px solid #e5e7eb;white-space:nowrap"><strong>' + escaparHtml(item.tipo + ' ' + item.numero + '/' + item.ano) + '</strong></td>' +
       '<td style="padding:9px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#475569">' + escaparHtml(item.matched_terms.join(', ')) + '</td>' +
-      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;color:#111827">' + escaparHtml(item.ementa) + '</td>' +
+      '<td style="padding:9px;border-bottom:1px solid #e5e7eb;color:#111827">' + renderizarEmentaCliente(item) + '</td>' +
       '<td style="padding:9px;border-bottom:1px solid #e5e7eb;white-space:nowrap"><a href="' + escaparHtml(item.url) + '" style="color:#1a3a5c;text-decoration:none;font-weight:bold">ver</a></td>' +
     '</tr>').join('') +
     '</tbody></table>';
@@ -735,8 +735,8 @@ function anotarClientesCitados(proposicoes) {
   for (const p of proposicoes || []) {
     const clientes = clientesCitadosNaProposicao(p);
     p.clientesCitados = clientes;
-    if (clientes.length && p.ementa && !String(p.ementa).includes('Cliente citado:')) {
-      p.ementa = String(p.ementa).trim() + ' | Cliente citado: ' + clientes.join(', ');
+    if (clientes.length && p.ementa && !(String(p.ementa).includes('Cliente citado:') || String(p.ementa).includes('CLIENTE CITADO:'))) {
+      p.ementa = String(p.ementa).trim() + ' | 🆘 CLIENTE CITADO: ' + clientes.join(', ');
     }
   }
 }
@@ -762,25 +762,45 @@ function mlDestacarTermosClienteEmail(texto, clientes) {
 
   const regex = new RegExp('(^|[^A-Za-zÀ-ÿ0-9])(' + nomes.map(mlEscapeRegExpClienteDestaque).join('|') + ')(?=[^A-Za-zÀ-ÿ0-9]|$)', 'gi');
   return mlEscapeHtmlClienteDestaque(texto).replace(regex, (match, prefixo, termo) => {
-    return prefixo + '<span style="background:#dbeafe;color:#1e3a8a;font-weight:700;border-radius:3px;padding:1px 3px">' + termo + '</span>';
+    return prefixo + '<span style="background:#fff1f2;color:#991b1b;font-weight:800;border:1px solid #fecdd3;border-radius:3px;padding:1px 4px">' + termo + '</span>';
   });
 }
 
 function renderizarEmentaCliente(p, renderBase) {
   const texto = String((p && p.ementa) || '-');
-  const partes = texto.split(/\s+\|\s+Cliente citado:\s+/i);
+  const partes = texto.split(/\s+\|\s+(?:🆘\s*)?CLIENTE CITADO:\s+|\s+\|\s+Cliente citado:\s+/i);
   const ementa = renderBase
     ? renderBase(partes[0])
     : mlDestacarTermosClienteEmail(partes[0], p && p.clientesCitados);
   const clientes = partes.length > 1
-    ? partes.slice(1).join(' | Cliente citado: ')
+    ? partes.slice(1).join(' | 🆘 CLIENTE CITADO: ')
     : ((p && p.clientesCitados) || []).join(', ');
 
   if (!clientes) return ementa;
   return ementa + '<div style="margin-top:6px">' +
-    '<span style="display:inline-block;background:#eef6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:700">' +
-    'Cliente citado: ' + mlDestacarTermosClienteEmail(clientes, p && p.clientesCitados) +
+    '<span style="display:inline-block;background:#fff1f2;border:1px solid #fb7185;color:#991b1b;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0">' +
+    '🆘 CLIENTE CITADO: ' + mlDestacarTermosClienteEmail(clientes, p && p.clientesCitados) +
     '</span></div>';
+}
+
+function clientesCitadosResumoEmail(novas) {
+  const vistos = new Set();
+  const nomes = [];
+  for (const p of (novas || [])) {
+    for (const nome of (Array.isArray(p && p.clientesCitados) ? p.clientesCitados : [])) {
+      const key = String(nome).toLowerCase();
+      if (!vistos.has(key)) { vistos.add(key); nomes.push(nome); }
+    }
+  }
+  return nomes;
+}
+
+function assuntoEmailClienteCitado(novas, assuntoBase) {
+  const nomes = clientesCitadosResumoEmail(novas);
+  if (!nomes.length) return assuntoBase;
+  const lista = nomes.slice(0, 3).join(', ') + (nomes.length > 3 ? ' +' + (nomes.length - 3) : '');
+  const base = String(assuntoBase || '');
+  return base.startsWith('🆘') ? base : '🆘 Cliente citado: ' + lista + ' | ' + base;
 }
 
 async function enviarEmail(matches, status, alertas = []) {
@@ -820,7 +840,7 @@ async function enviarEmail(matches, status, alertas = []) {
   await transporter.sendMail({
     from: '"Monitor Eletromidia" <' + EMAIL_REMETENTE + '>',
     to: ELETROMIDIA_DESTINO,
-    subject: 'Eletromídia | Proposições novas filtradas SP/RJ' + (alertas.length ? ' | alerta sequência' : '') + ' — ' + new Date().toLocaleDateString('pt-BR'),
+    subject: assuntoEmailClienteCitado(matches, 'Eletromídia | Proposições novas filtradas SP/RJ' + (alertas.length ? ' | alerta sequência' : '') + ' — ' + new Date().toLocaleDateString('pt-BR')),
     html,
     attachments: fs.existsSync(LOGO_PATH) ? [{ filename: 'monitor-logo-color.png', path: LOGO_PATH, cid: 'monitorLogo' }] : [],
   });
