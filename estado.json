@@ -36036,7 +36036,18 @@
     "cmsp:pl:579:2026:557683:4krre9",
     "cmsp:pl:580:2026:557688:4krree",
     "cmsp:ind:405:2026:557691:4krrf2",
-    "cmsp:rds:933:2026:557692:4krrf3"
+    "cmsp:rds:933:2026:557692:4krrf3",
+    "cmsp:rds:934:2026:557696:4krrf7",
+    "cmsp:rds:935:2026:557697:4krrf8",
+    "cmsp:ind:406:2026:557700:4krrxz",
+    "cmsp:rds:936:2026:557702:4krry1",
+    "cmsp:rds:937:2026:557703:4krry2",
+    "cmsp:pl:581:2026:557706:4krry5",
+    "cmsp:rds:938:2026:557707:4krry6",
+    "cmsp:rds:939:2026:557709:4krry8",
+    "cmsp:rds:940:2026:557718:4krrz2",
+    "cmsp:rds:941:2026:557719:4krrz3",
+    "cmsp:pl:582:2026:557720:4krrzp"
   ],
   "matches_enviados": [
     {
@@ -36487,6 +36498,20 @@
         "Painel"
       ],
       "sent_at": "2026-07-20T08:26:11.696Z"
+    },
+    {
+      "dedupe_key": "cmsp:rds:938:2026:557707:4krry6",
+      "source": "CMSP",
+      "tipo": "RDS",
+      "numero": 938,
+      "ano": "2026",
+      "confidence": "alta",
+      "matched_terms": [
+        "Eletromidia",
+        "Abrigos de onibus",
+        "Abrigos de ônibus"
+      ],
+      "sent_at": "2026-07-27T08:26:13.790Z"
     }
   ],
   "ultimos_por_tipo_ano": {
@@ -36498,11 +36523,11 @@
     "ALESP|PDL|2026": 18,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 933,
+    "CMSP|RDS|2026": 941,
     "CMSP|PR|2026": 20,
-    "CMSP|PL|2026": 580,
+    "CMSP|PL|2026": 582,
     "CMSP|AUD|2026": 264,
-    "CMSP|IND|2026": 405,
+    "CMSP|IND|2026": 406,
     "CMSP|MOC|2026": 32,
     "CMSP|PDL|2026": 90,
     "CMSP|RDP|2026": 11,
@@ -36534,5 +36559,5 @@
     "ALESP|OUTROS|2026": 10114,
     "ALESP|PEC|2026": 1
   },
-  "ultima_execucao": "2026-07-24T08:25:57.181Z"
+  "ultima_execucao": "2026-07-27T08:26:13.790Z"
 }
