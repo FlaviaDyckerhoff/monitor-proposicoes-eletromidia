@@ -13,6 +13,7 @@ const ELETROMIDIA_DESTINO = process.env.ELETROMIDIA_DESTINO || EMAIL_DESTINO;
 const EMAIL_ALERTA_FALHA = process.env.EMAIL_ALERTA_FALHA || 'flavia@monitorlegislativo.com.br';
 const EMAIL_REMETENTE = process.env.EMAIL_REMETENTE;
 const EMAIL_SENHA = process.env.EMAIL_SENHA;
+const CONTROLE03_FORCE_LATEST = String(process.env.CONTROLE03_FORCE_LATEST || '').trim() === '1';
 const DRY_RUN = String(process.env.DRY_RUN || '').toLowerCase() === 'true';
 const ARQUIVO_ESTADO = 'estado.json';
 const ANO = String(new Date().getFullYear());
@@ -718,12 +719,25 @@ const CLIENTES_NOMES_PROPRIOS = [
   'Nova Infra', 'BRT'
 ];
 
+const CLIENTES_INATIVOS_NAO_DESTACAR = [
+  'CVC', 'DIAGEO', 'Femsa', 'Lalamove', 'lalamove',
+  'Maersk', 'Matrix', 'Rei do Pitaco', 'Sanofi', 'Syngenta',
+  'Ypê', 'Ype', 'Braskem', 'Vital', 'Natural Energia',
+  'Pacto Pela Fome', 'TikTok', 'Norte Energia', 'Mac Jee',
+  'Solar', 'Grupo Simões', 'Grupo Simoes'
+];
+
+function clienteAtivoParaDestaque(nome) {
+  return !CLIENTES_INATIVOS_NAO_DESTACAR.some(inativo => inativo.toLowerCase() === String(nome || '').toLowerCase());
+}
+
 function clientesCitadosNaProposicao(p) {
   const texto = [p.cliente, p.clientes, p.autor, p.autores, p.tipo, p.rotulo, p.titulo, p.identificacao, p.ementa]
     .filter(Boolean)
     .join(' ');
   const achados = [];
   for (const nome of CLIENTES_NOMES_PROPRIOS) {
+    if (!clienteAtivoParaDestaque(nome)) continue;
     const escaped = nome.replace(/[.*+?^\${}()|[\]\\]/g, '\\$&');
     const re = new RegExp('(^|[^A-Za-zÀ-ÿ0-9])' + escaped + '([^A-Za-zÀ-ÿ0-9]|$)', 'i');
     if (re.test(texto) && !achados.some(a => a.toLowerCase() === nome.toLowerCase())) achados.push(nome);
@@ -757,6 +771,7 @@ function mlEscapeRegExpClienteDestaque(valor) {
 function mlDestacarTermosClienteEmail(texto, clientes) {
   const nomes = Array.from(new Set([...(clientes || []), ...CLIENTES_NOMES_PROPRIOS]))
     .filter(Boolean)
+    .filter(clienteAtivoParaDestaque)
     .sort((a, b) => b.length - a.length);
   if (!nomes.length) return mlEscapeHtmlClienteDestaque(texto);
 
@@ -804,6 +819,11 @@ function assuntoEmailClienteCitado(novas, assuntoBase) {
 }
 
 async function enviarEmail(matches, status, alertas = []) {
+  if (CONTROLE03_FORCE_LATEST) {
+    console.log('📌 Modo Controle 03: email de novidades não enviado.');
+    return;
+  }
+
   anotarClientesCitados(matches);
   if (!EMAIL_REMETENTE || !EMAIL_SENHA || !ELETROMIDIA_DESTINO) {
     throw new Error('Variaveis de email ausentes.');
