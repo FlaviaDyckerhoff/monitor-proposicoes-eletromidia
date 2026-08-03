@@ -39759,7 +39759,26 @@
     "cmsp:rds:952:2026:557904:4krtfh",
     "cmsp:pl:600:2026:557906:4krtfj",
     "cmsp:pl:601:2026:557909:4krtfm",
-    "cmsp:rds:953:2026:557910:4krtg8"
+    "cmsp:rds:953:2026:557910:4krtg8",
+    "cmsp:rsc:1:2026:557914:4krtgc",
+    "cmsp:pl:602:2026:557923:4krth6",
+    "cmsp:pl:603:2026:557929:4krthc",
+    "cmsp:rds:954:2026:557931:4krthz",
+    "alerj:moc:2988:2026:20261402988:alerj:20261402988:dyna85",
+    "alerj:moc:2987:2026:20261402987:alerj:20261402987:vrunvi",
+    "alerj:moc:2986:2026:20261402986:alerj:20261402986:xgic4s",
+    "alerj:moc:2985:2026:20261402985:alerj:20261402985:f7n2pm",
+    "alerj:moc:2984:2026:20261402984:alerj:20261402984:z7dy2u",
+    "alerj:moc:2983:2026:20261402983:alerj:20261402983:x8nm8u",
+    "alerj:moc:2982:2026:20261402982:alerj:20261402982:djboi1",
+    "alerj:moc:2981:2026:20261402981:alerj:20261402981:wiqb7v",
+    "alerj:moc:2980:2026:20261402980:alerj:20261402980:qmtse2",
+    "alerj:moc:2979:2026:20261402979:alerj:20261402979:mvvmr7",
+    "alerj:moc:2978:2026:20261402978:alerj:20261402978:8uzgrw",
+    "alerj:moc:2977:2026:20261402977:alerj:20261402977:3408td",
+    "alerj:moc:2976:2026:20261402976:alerj:20261402976:9for9a",
+    "alerj:moc:2975:2026:20261402975:alerj:20261402975:edc9b6",
+    "alerj:moc:2974:2026:20261402974:alerj:20261402974:ikg1p9"
   ],
   "matches_enviados": [
     {
@@ -40283,9 +40302,9 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 953,
+    "CMSP|RDS|2026": 954,
     "CMSP|PR|2026": 23,
-    "CMSP|PL|2026": 601,
+    "CMSP|PL|2026": 603,
     "CMSP|AUD|2026": 264,
     "CMSP|IND|2026": 409,
     "CMSP|MOC|2026": 32,
@@ -40302,7 +40321,7 @@
     "ALERJ|PR|2026": 2718,
     "ALERJ|IND-L|2026": 677,
     "ALERJ|IND|2026": 6997,
-    "ALERJ|MOC|2026": 2798,
+    "ALERJ|MOC|2026": 2988,
     "ALERJ|REQ|2026": 86,
     "ALERJ|REQ-I|2026": 15,
     "ALERJ|REQ-SN|2026": 156,
@@ -40317,7 +40336,8 @@
     "CMRJ|REQ|2026": 5220,
     "CMRJ|MSG|2026": 32,
     "ALESP|OUTROS|2026": 13267,
-    "ALESP|PEC|2026": 1
+    "ALESP|PEC|2026": 1,
+    "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-07-31T08:26:05.200Z"
+  "ultima_execucao": "2026-08-03T08:26:21.389Z"
 }
