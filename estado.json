@@ -39959,7 +39959,14 @@
     "alerj:ind:7041:2026:20260707041:alerj:20260707041:k25mzh",
     "alerj:ind:7040:2026:20260707040:alerj:20260707040:6uur2o",
     "alerj:ind:7039:2026:20260707039:alerj:20260707039:3kkvbk",
-    "alerj:ind:7038:2026:20260707038:alerj:20260707038:zcfw5n"
+    "alerj:ind:7038:2026:20260707038:alerj:20260707038:zcfw5n",
+    "cmsp:pl:642:2026:558723:4ksezb",
+    "cmsp:pl:643:2026:558724:4ksezc",
+    "cmsp:pr:25:2026:558725:4ksezd",
+    "cmsp:rds:992:2026:558736:4ksf09",
+    "cmsp:rds:993:2026:558746:4ksf14",
+    "alerj:ind:7048:2026:20260707048:alerj:20260707048:c72wi2",
+    "alerj:ind:7047:2026:20260707047:alerj:20260707047:u9bzxs"
   ],
   "matches_enviados": [
     {
@@ -40483,9 +40490,9 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 991,
-    "CMSP|PR|2026": 24,
-    "CMSP|PL|2026": 641,
+    "CMSP|RDS|2026": 993,
+    "CMSP|PR|2026": 25,
+    "CMSP|PL|2026": 643,
     "CMSP|AUD|2026": 264,
     "CMSP|IND|2026": 422,
     "CMSP|MOC|2026": 33,
@@ -40501,7 +40508,7 @@
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2741,
     "ALERJ|IND-L|2026": 684,
-    "ALERJ|IND|2026": 7046,
+    "ALERJ|IND|2026": 7048,
     "ALERJ|MOC|2026": 2988,
     "ALERJ|REQ|2026": 86,
     "ALERJ|REQ-I|2026": 15,
@@ -40520,5 +40527,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-08-07T08:26:19.017Z"
+  "ultima_execucao": "2026-08-10T08:26:25.431Z"
 }
