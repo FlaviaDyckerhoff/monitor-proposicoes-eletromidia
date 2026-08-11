@@ -39966,7 +39966,24 @@
     "cmsp:rds:992:2026:558736:4ksf09",
     "cmsp:rds:993:2026:558746:4ksf14",
     "alerj:ind:7048:2026:20260707048:alerj:20260707048:c72wi2",
-    "alerj:ind:7047:2026:20260707047:alerj:20260707047:u9bzxs"
+    "alerj:ind:7047:2026:20260707047:alerj:20260707047:u9bzxs",
+    "cmsp:rds:994:2026:558765:4ksf2t",
+    "cmsp:rds:995:2026:558766:4ksf2u",
+    "cmsp:rds:996:2026:558767:4ksf2v",
+    "cmsp:rds:997:2026:558768:4ksf2w",
+    "cmsp:rds:998:2026:558769:4ksf2x",
+    "cmsp:rds:999:2026:558770:4ksf3j",
+    "cmsp:rds:1000:2026:558777:4ksf3q",
+    "cmsp:rds:1001:2026:558779:4ksf3s",
+    "cmsp:pl:644:2026:558786:4ksf4k",
+    "cmsp:rds:1002:2026:558787:4ksf4l",
+    "cmsp:pl:645:2026:558814:4ksfp6",
+    "cmsp:rds:1003:2026:558815:4ksfp7",
+    "cmsp:pl:646:2026:558816:4ksfp8",
+    "cmsp:pl:647:2026:558817:4ksfp9",
+    "cmsp:rds:1004:2026:558824:4ksfq1",
+    "alerj:plc:61:2026:20260200061:alerj:20260200061:vkbhm0",
+    "alerj:pl:8085:2026:20260308085:alerj:20260308085:fs791q"
   ],
   "matches_enviados": [
     {
@@ -40490,9 +40507,9 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 993,
+    "CMSP|RDS|2026": 1004,
     "CMSP|PR|2026": 25,
-    "CMSP|PL|2026": 643,
+    "CMSP|PL|2026": 647,
     "CMSP|AUD|2026": 264,
     "CMSP|IND|2026": 422,
     "CMSP|MOC|2026": 33,
@@ -40503,8 +40520,8 @@
     "CMSP|RPL|2026": 20,
     "CMSP|PLO|2026": 5,
     "ALERJ|PEC|2026": 34,
-    "ALERJ|PLC|2026": 60,
-    "ALERJ|PL|2026": 8084,
+    "ALERJ|PLC|2026": 61,
+    "ALERJ|PL|2026": 8085,
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2741,
     "ALERJ|IND-L|2026": 684,
@@ -40527,5 +40544,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-08-10T08:26:25.431Z"
+  "ultima_execucao": "2026-08-11T08:26:20.984Z"
 }
