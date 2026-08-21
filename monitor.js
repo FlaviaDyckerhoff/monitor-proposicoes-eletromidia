@@ -1,10 +1,38 @@
+const FICHA_URL = process.env.FICHA_URL || 'https://doe.monitorlegislativo.com.br/ficha';
+
+function fichaEmailButtonHtml() {
+  return '<div style="background:#eef6ff;border:1px solid #c7ddf2;border-radius:6px;padding:11px 13px;margin:12px 0;color:#173d63;font-size:13px;line-height:1.45">' +
+    '<strong>Ficha</strong><br>' +
+    '<span>Cole o link oficial de uma proposição para criar ficha e acelerar a revisão/cadastro.</span><br>' +
+    '<a href="' + FICHA_URL + '" style="display:inline-block;background:#0f3d5c;color:white;text-decoration:none;border-radius:4px;padding:8px 11px;font-weight:bold;margin-top:8px">Criar ficha</a>' +
+    '</div>';
+}
+
 const fs = require('fs');
 const { DOMParser } = require('@xmldom/xmldom');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
 const nodemailer = require('nodemailer');
-const path = require('path');
+let promoverInteresseClienteProposicao = (_item, atuais) => Array.isArray(atuais) ? atuais : [];
+try {
+  try {
+    ({ promoverInteresseClienteProposicao } = require('./client_interest_matcher_js'));
+  } catch (_localErr) {
+    ({ promoverInteresseClienteProposicao } = require('../../agents/pautas/client_interest_matcher_js'));
+  }
+} catch (err) {
+  console.warn('⚠️ Matcher cliente/palavra comum indisponível; usando destaque legado: ' + err.message);
+}
 
+function mlClientInterestContext() {
+  return {
+    uf: typeof CLIENT_INTEREST_UF !== 'undefined' ? CLIENT_INTEREST_UF : (process.env.CLIENT_INTEREST_UF || process.env.UF || ''),
+    municipio: typeof CLIENT_INTEREST_MUNICIPIO !== 'undefined' ? CLIENT_INTEREST_MUNICIPIO : (process.env.CLIENT_INTEREST_MUNICIPIO || process.env.MUNICIPIO || ''),
+    casa: typeof CASA_RADAR03 !== 'undefined' ? CASA_RADAR03 : (process.env.CASA_RADAR03 || process.env.CASA || ''),
+  };
+}
+
+const path = require('path');
 // CMRJ usa cadeia TLS antiga; manter igual ao monitor CMRJ existente.
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -716,7 +744,7 @@ const CLIENTES_NOMES_PROPRIOS = [
   'Wild Fork', 'Ajinomoto', 'Vibra', 'Vibra Energia',
   'BR Distribuidora', 'Raízen', 'Raizen', 'Mindlab',
   'ABVTEX', 'Semove', 'Barcas', 'Seta',
-  'Nova Infra', 'BRT'
+  'Nova Infra'
 ];
 
 const CLIENTES_INATIVOS_NAO_DESTACAR = [
@@ -742,7 +770,7 @@ function clientesCitadosNaProposicao(p) {
     const re = new RegExp('(^|[^A-Za-zÀ-ÿ0-9])' + escaped + '([^A-Za-zÀ-ÿ0-9]|$)', 'i');
     if (re.test(texto) && !achados.some(a => a.toLowerCase() === nome.toLowerCase())) achados.push(nome);
   }
-  return achados;
+  return promoverInteresseClienteProposicao(p, achados, mlClientInterestContext());
 }
 
 function anotarClientesCitados(proposicoes) {
@@ -861,7 +889,7 @@ async function enviarEmail(matches, status, alertas = []) {
     from: '"Monitor Eletromidia" <' + EMAIL_REMETENTE + '>',
     to: ELETROMIDIA_DESTINO,
     subject: assuntoEmailClienteCitado(matches, 'Eletromídia | Proposições novas filtradas SP/RJ' + (alertas.length ? ' | alerta sequência' : '') + ' — ' + new Date().toLocaleDateString('pt-BR')),
-    html,
+    html: fichaEmailButtonHtml() + html,
     attachments: fs.existsSync(LOGO_PATH) ? [{ filename: 'monitor-logo-color.png', path: LOGO_PATH, cid: 'monitorLogo' }] : [],
   });
 }
@@ -891,7 +919,7 @@ async function enviarAlertaErro(status, contexto) {
     from: '"Monitor Legislativo" <' + EMAIL_REMETENTE + '>',
     to: EMAIL_ALERTA_FALHA,
     subject: '[ALERTA INTERNO] Eletromídia Proposições — erro na coleta',
-    html,
+    html: fichaEmailButtonHtml() + html,
   });
 }
 
