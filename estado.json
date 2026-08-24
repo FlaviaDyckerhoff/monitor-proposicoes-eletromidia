@@ -40280,7 +40280,10 @@
     "alerj:ind:7136:2026:20260707136:alerj:20260707136:g4tt2z",
     "alerj:ind:7135:2026:20260707135:alerj:20260707135:lp2nl4",
     "alerj:ind:7134:2026:20260707134:alerj:20260707134:azucm0",
-    "alerj:ind:7133:2026:20260707133:alerj:20260707133:ikwi0f"
+    "alerj:ind:7133:2026:20260707133:alerj:20260707133:ikwi0f",
+    "cmsp:pl:679:2026:560188:4l6zdl",
+    "cmsp:ind:454:2026:560189:4l6zdm",
+    "cmsp:pl:680:2026:560211:4l6zy2"
   ],
   "matches_enviados": [
     {
@@ -40806,9 +40809,9 @@
     "ALESP|PR|2026": 10,
     "CMSP|RDS|2026": 1046,
     "CMSP|PR|2026": 28,
-    "CMSP|PL|2026": 678,
+    "CMSP|PL|2026": 680,
     "CMSP|AUD|2026": 268,
-    "CMSP|IND|2026": 453,
+    "CMSP|IND|2026": 454,
     "CMSP|MOC|2026": 35,
     "CMSP|PDL|2026": 97,
     "CMSP|RDP|2026": 11,
@@ -40841,5 +40844,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-08-21T08:26:05.908Z"
+  "ultima_execucao": "2026-08-24T08:25:48.098Z"
 }
