@@ -40506,7 +40506,16 @@
     "alerj:ind:7163:2026:20260707163:alerj:20260707163:sk6d61",
     "alerj:ind:7162:2026:20260707162:alerj:20260707162:a2zbyc",
     "alerj:ind:7161:2026:20260707161:alerj:20260707161:38obyf",
-    "alerj:ind:7160:2026:20260707160:alerj:20260707160:ngovrl"
+    "alerj:ind:7160:2026:20260707160:alerj:20260707160:ngovrl",
+    "cmsp:rds:1116:2026:561550:4l7p93",
+    "cmsp:rds:1117:2026:561554:4l7p97",
+    "cmsp:rds:1118:2026:561557:4l7p9a",
+    "cmsp:pdl:99:2026:561569:4l7pa7",
+    "cmsp:pdl:100:2026:561570:4l7pat",
+    "cmsp:ind:461:2026:561575:4l7pay",
+    "cmsp:pl:708:2026:561576:4l7paz",
+    "cmsp:rds:1119:2026:561579:4l7pb2",
+    "alerj:pl:8277:2026:20260308277:alerj:20260308277:5uhpby"
   ],
   "matches_enviados": [
     {
@@ -41019,6 +41028,19 @@
         "LED"
       ],
       "sent_at": "2026-07-28T08:26:30.034Z"
+    },
+    {
+      "dedupe_key": "cmsp:rds:1116:2026:561550:4l7p93",
+      "source": "CMSP",
+      "tipo": "RDS",
+      "numero": 1116,
+      "ano": "2026",
+      "confidence": "media",
+      "matched_terms": [
+        "Paineis",
+        "Painéis"
+      ],
+      "sent_at": "2026-09-07T08:26:02.227Z"
     }
   ],
   "ultimos_por_tipo_ano": {
@@ -41030,13 +41052,13 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 1115,
+    "CMSP|RDS|2026": 1119,
     "CMSP|PR|2026": 28,
-    "CMSP|PL|2026": 707,
+    "CMSP|PL|2026": 708,
     "CMSP|AUD|2026": 269,
-    "CMSP|IND|2026": 460,
+    "CMSP|IND|2026": 461,
     "CMSP|MOC|2026": 37,
-    "CMSP|PDL|2026": 98,
+    "CMSP|PDL|2026": 100,
     "CMSP|RDP|2026": 13,
     "CMSP|RPS|2026": 23,
     "CMSP|RPP|2026": 9,
@@ -41044,7 +41066,7 @@
     "CMSP|PLO|2026": 5,
     "ALERJ|PEC|2026": 34,
     "ALERJ|PLC|2026": 65,
-    "ALERJ|PL|2026": 8276,
+    "ALERJ|PL|2026": 8277,
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2786,
     "ALERJ|IND-L|2026": 695,
@@ -41067,5 +41089,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-09-04T08:33:18.772Z"
+  "ultima_execucao": "2026-09-07T08:26:02.228Z"
 }
