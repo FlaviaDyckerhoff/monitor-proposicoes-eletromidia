@@ -40691,7 +40691,24 @@
     "alerj:pl:8318:2026:20260308318:alerj:20260308318:mc8azm",
     "alerj:pl:8317:2026:20260308317:alerj:20260308317:2x7kl1",
     "alerj:pl:8316:2026:20260308316:alerj:20260308316:pmb9ms",
-    "alerj:pr:2787:2026:20260502787:alerj:20260502787:4d6rs"
+    "alerj:pr:2787:2026:20260502787:alerj:20260502787:4d6rs",
+    "cmsp:ind:469:2026:562381:4l8atu",
+    "cmsp:ind:470:2026:562407:4l8bdt",
+    "cmsp:ind:471:2026:562408:4l8bdu",
+    "cmsp:rds:1173:2026:562411:4l8bei",
+    "cmsp:rds:1174:2026:562414:4l8bel",
+    "cmsp:rds:1175:2026:562415:4l8bem",
+    "cmsp:rds:1176:2026:562422:4l8bfe",
+    "cmsp:pl:734:2026:562433:4l8bga",
+    "cmsp:ind:472:2026:562435:4l8bgc",
+    "cmsp:ind:473:2026:562436:4l8bgd",
+    "cmsp:rds:1177:2026:562508:4l8c4j",
+    "cmsp:pl:735:2026:562510:4l8c56",
+    "alerj:pl:8329:2026:20260308329:alerj:20260308329:iq3k7m",
+    "alerj:pl:8328:2026:20260308328:alerj:20260308328:jq7029",
+    "alerj:ind:7186:2026:20260707186:alerj:20260707186:v848by",
+    "alerj:ind:7185:2026:20260707185:alerj:20260707185:frwx0k",
+    "alerj:ind:7184:2026:20260707184:alerj:20260707184:42gjyl"
   ],
   "matches_enviados": [
     {
@@ -41228,11 +41245,11 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 1172,
+    "CMSP|RDS|2026": 1177,
     "CMSP|PR|2026": 28,
-    "CMSP|PL|2026": 733,
+    "CMSP|PL|2026": 735,
     "CMSP|AUD|2026": 289,
-    "CMSP|IND|2026": 468,
+    "CMSP|IND|2026": 473,
     "CMSP|MOC|2026": 39,
     "CMSP|PDL|2026": 101,
     "CMSP|RDP|2026": 13,
@@ -41242,11 +41259,11 @@
     "CMSP|PLO|2026": 5,
     "ALERJ|PEC|2026": 34,
     "ALERJ|PLC|2026": 65,
-    "ALERJ|PL|2026": 8327,
+    "ALERJ|PL|2026": 8329,
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2787,
     "ALERJ|IND-L|2026": 698,
-    "ALERJ|IND|2026": 7183,
+    "ALERJ|IND|2026": 7186,
     "ALERJ|MOC|2026": 3048,
     "ALERJ|REQ|2026": 86,
     "ALERJ|REQ-I|2026": 16,
@@ -41265,5 +41282,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-09-16T08:26:17.897Z"
+  "ultima_execucao": "2026-09-17T08:26:08.182Z"
 }
