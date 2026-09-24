@@ -40816,7 +40816,51 @@
     "alerj:moc:3028:2026:20261403028:alerj:20261403028:y7rg75",
     "alerj:moc:3027:2026:20261403027:alerj:20261403027:cmwpyj",
     "alerj:moc:3025:2026:20261403025:alerj:20261403025:m7vjsw",
-    "alerj:moc:3024:2026:20261403024:alerj:20261403024:cydz8o"
+    "alerj:moc:3024:2026:20261403024:alerj:20261403024:cydz8o",
+    "cmsp:pr:29:2026:562912:4l8f40",
+    "cmsp:rds:1222:2026:562913:4l8f41",
+    "cmsp:rds:1223:2026:562937:4l8f5v",
+    "cmsp:rds:1224:2026:562938:4l8f5w",
+    "cmsp:rds:1225:2026:562939:4l8f5x",
+    "cmsp:rds:1226:2026:562951:4l8f7f",
+    "cmsp:rds:1227:2026:562983:4l8fa2",
+    "cmsp:pl:744:2026:562986:4l8fa5",
+    "cmsp:rds:1228:2026:562987:4l8fa6",
+    "cmsp:rds:1229:2026:562988:4l8fa7",
+    "cmsp:rds:1230:2026:562990:4l8fau",
+    "cmsp:rds:1231:2026:562992:4l8faw",
+    "cmsp:rds:1232:2026:562993:4l8fax",
+    "cmsp:rds:1233:2026:562996:4l8fb0",
+    "cmsp:rds:1234:2026:562997:4l8fb1",
+    "cmsp:rds:1235:2026:562998:4l8fb2",
+    "cmsp:rds:1236:2026:563000:4l8ved",
+    "cmsp:rds:1237:2026:563002:4l8vef",
+    "cmsp:rds:1238:2026:563003:4l8veg",
+    "cmsp:rds:1239:2026:563020:4l8vg3",
+    "alerj:pl:8350:2026:20260308350:alerj:20260308350:uxe1xn",
+    "alerj:pl:8349:2026:20260308349:alerj:20260308349:fgwjlj",
+    "alerj:pl:8348:2026:20260308348:alerj:20260308348:xazvzw",
+    "alerj:pr:2796:2026:20260502796:alerj:20260502796:d3qleo",
+    "alerj:pr:2795:2026:20260502795:alerj:20260502795:xzfetc",
+    "alerj:pr:2794:2026:20260502794:alerj:20260502794:fp4c8b",
+    "alerj:pr:2793:2026:20260502793:alerj:20260502793:7ybv52",
+    "alerj:pr:2792:2026:20260502792:alerj:20260502792:3xd8gw",
+    "alerj:pr:2791:2026:20260502791:alerj:20260502791:x2pkvm",
+    "alerj:ind:7195:2026:20260707195:alerj:20260707195:gmxoo8",
+    "alerj:ind:7194:2026:20260707194:alerj:20260707194:gcqzym",
+    "alerj:ind:7193:2026:20260707193:alerj:20260707193:pmavpl",
+    "alerj:ind:7192:2026:20260707192:alerj:20260707192:pvtavh",
+    "alerj:ind:7191:2026:20260707191:alerj:20260707191:qicco5",
+    "alerj:ind:7190:2026:20260707190:alerj:20260707190:x8tjc7",
+    "alerj:ind:7189:2026:20260707189:alerj:20260707189:xzil2l",
+    "alerj:ind:7188:2026:20260707188:alerj:20260707188:3hbzqw",
+    "alerj:moc:3040:2026:20261403040:alerj:20261403040:wx3ykq",
+    "alerj:moc:3039:2026:20261403039:alerj:20261403039:vo0d7g",
+    "alerj:moc:3038:2026:20261403038:alerj:20261403038:i5qpby",
+    "alerj:moc:3037:2026:20261403037:alerj:20261403037:rzwuvl",
+    "alerj:moc:3036:2026:20261403036:alerj:20261403036:e4rc9x",
+    "alerj:moc:3035:2026:20261403035:alerj:20261403035:5ykkdb",
+    "alerj:moc:3034:2026:20261403034:alerj:20261403034:44ofrp"
   ],
   "matches_enviados": [
     {
@@ -41342,6 +41386,19 @@
         "Painéis"
       ],
       "sent_at": "2026-09-07T08:26:02.227Z"
+    },
+    {
+      "dedupe_key": "alerj:ind:7193:2026:20260707193:alerj:20260707193:pmavpl",
+      "source": "ALERJ",
+      "tipo": "IND",
+      "numero": "7193",
+      "ano": "2026",
+      "confidence": "media",
+      "matched_terms": [
+        "Paineis",
+        "Painéis"
+      ],
+      "sent_at": "2026-09-24T08:26:18.395Z"
     }
   ],
   "ultimos_por_tipo_ano": {
@@ -41353,9 +41410,9 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 1221,
-    "CMSP|PR|2026": 28,
-    "CMSP|PL|2026": 743,
+    "CMSP|RDS|2026": 1239,
+    "CMSP|PR|2026": 29,
+    "CMSP|PL|2026": 744,
     "CMSP|AUD|2026": 291,
     "CMSP|IND|2026": 480,
     "CMSP|MOC|2026": 39,
@@ -41367,11 +41424,11 @@
     "CMSP|PLO|2026": 5,
     "ALERJ|PEC|2026": 34,
     "ALERJ|PLC|2026": 65,
-    "ALERJ|PL|2026": 8347,
+    "ALERJ|PL|2026": 8350,
     "ALERJ|PDL|2026": 14,
-    "ALERJ|PR|2026": 2790,
+    "ALERJ|PR|2026": 2796,
     "ALERJ|IND-L|2026": 699,
-    "ALERJ|IND|2026": 7187,
+    "ALERJ|IND|2026": 7195,
     "ALERJ|MOC|2026": 3048,
     "ALERJ|REQ|2026": 86,
     "ALERJ|REQ-I|2026": 16,
@@ -41390,5 +41447,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-09-23T08:26:20.446Z"
+  "ultima_execucao": "2026-09-24T08:26:18.396Z"
 }
