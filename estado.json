@@ -40860,7 +40860,26 @@
     "alerj:moc:3037:2026:20261403037:alerj:20261403037:rzwuvl",
     "alerj:moc:3036:2026:20261403036:alerj:20261403036:e4rc9x",
     "alerj:moc:3035:2026:20261403035:alerj:20261403035:5ykkdb",
-    "alerj:moc:3034:2026:20261403034:alerj:20261403034:44ofrp"
+    "alerj:moc:3034:2026:20261403034:alerj:20261403034:44ofrp",
+    "cmsp:rds:1240:2026:563034:4l8vh2",
+    "cmsp:pl:745:2026:563079:4l8vkn",
+    "cmsp:rds:1241:2026:563096:4l8vma",
+    "cmsp:rds:1242:2026:563102:4l8w54",
+    "cmsp:rds:1243:2026:563125:4l8w6x",
+    "cmsp:rds:1244:2026:563146:4l8w8o",
+    "alerj:pl:8354:2026:20260308354:alerj:20260308354:vvkihd",
+    "alerj:pl:8353:2026:20260308353:alerj:20260308353:ru0rns",
+    "alerj:pl:8352:2026:20260308352:alerj:20260308352:r8ae1r",
+    "alerj:pl:8351:2026:20260308351:alerj:20260308351:jlq8hb",
+    "alerj:moc:3050:2026:20261403050:alerj:20261403050:6ql50q",
+    "alerj:moc:3049:2026:20261403049:alerj:20261403049:sf7mpc",
+    "alerj:moc:3047:2026:20261403047:alerj:20261403047:hbcbnl",
+    "alerj:moc:3046:2026:20261403046:alerj:20261403046:qcvg8w",
+    "alerj:moc:3045:2026:20261403045:alerj:20261403045:3l0gsz",
+    "alerj:moc:3044:2026:20261403044:alerj:20261403044:40mvoj",
+    "alerj:moc:3043:2026:20261403043:alerj:20261403043:4du3s",
+    "alerj:moc:3042:2026:20261403042:alerj:20261403042:mw0bxu",
+    "alerj:moc:3041:2026:20261403041:alerj:20261403041:91ws2i"
   ],
   "matches_enviados": [
     {
@@ -41410,9 +41429,9 @@
     "ALESP|PDL|2026": 21,
     "ALESP|PLC|2026": 15,
     "ALESP|PR|2026": 10,
-    "CMSP|RDS|2026": 1239,
+    "CMSP|RDS|2026": 1244,
     "CMSP|PR|2026": 29,
-    "CMSP|PL|2026": 744,
+    "CMSP|PL|2026": 745,
     "CMSP|AUD|2026": 291,
     "CMSP|IND|2026": 480,
     "CMSP|MOC|2026": 39,
@@ -41424,12 +41443,12 @@
     "CMSP|PLO|2026": 5,
     "ALERJ|PEC|2026": 34,
     "ALERJ|PLC|2026": 65,
-    "ALERJ|PL|2026": 8350,
+    "ALERJ|PL|2026": 8354,
     "ALERJ|PDL|2026": 14,
     "ALERJ|PR|2026": 2796,
     "ALERJ|IND-L|2026": 699,
     "ALERJ|IND|2026": 7195,
-    "ALERJ|MOC|2026": 3048,
+    "ALERJ|MOC|2026": 3050,
     "ALERJ|REQ|2026": 86,
     "ALERJ|REQ-I|2026": 16,
     "ALERJ|REQ-SN|2026": 156,
@@ -41447,5 +41466,5 @@
     "ALESP|PEC|2026": 1,
     "CMSP|RSC|2026": 1
   },
-  "ultima_execucao": "2026-09-24T08:26:18.396Z"
+  "ultima_execucao": "2026-09-25T08:25:57.958Z"
 }
